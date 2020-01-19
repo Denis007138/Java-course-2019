@@ -16,7 +16,7 @@ public interface FractionNumberOperation {
 	 * @throws NullPointerException если а или b равны null
 	 * @return
 	 */
-	double add (FractionNumber a, FractionNumber b) throws NullPointerException;
+	FractionNumberImpl add (FractionNumber a, FractionNumber b) throws NullPointerException;
 	
 	/**
 	 * Вычитание двух чисел FractionNumber
@@ -26,7 +26,7 @@ public interface FractionNumberOperation {
 	 * @return результат в виде числа FractionNumber
 	 * @throws NullPointerException если а или b равны null
 	 */
-	double sub (FractionNumber a, FractionNumber b) throws NullPointerException;
+	FractionNumberImpl sub (FractionNumber a, FractionNumber b) throws NullPointerException;
 	
 	/**
 	 * Умножение двух чисел FractionNumber
@@ -36,7 +36,7 @@ public interface FractionNumberOperation {
 	 * @return результат в виде числа FractionNumber
 	 * @throws NullPointerException если а или b равны null
 	 */
-	double mul (FractionNumber a, FractionNumber b) throws NullPointerException;
+	FractionNumberImpl mul (FractionNumber a, FractionNumber b) throws NullPointerException;
 	
 	/**
 	 * Деление двух чисел FractionNumber
@@ -47,5 +47,5 @@ public interface FractionNumberOperation {
 	 * @throws NullPointerException если а или b равны null
 	 * @throws ArithmeticException в случае если происходит деление на 0
 	 */
-	double div (FractionNumber a, FractionNumber b) throws NullPointerException, ArithmeticException;
+	FractionNumberImpl div (FractionNumber a, FractionNumber b) throws NullPointerException, ArithmeticException;
 }

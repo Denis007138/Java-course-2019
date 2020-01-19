@@ -7,7 +7,7 @@ public class Main1 {
         int monthToTrip=4;
         int salary=2000;
 
-
+//Ищем сохраненные деньги, где необходимо найти сколько зарплат нужно для тура
         int savedMoneyAtThisPeriod=salary*monthToTrip;
         int totalMoneyBeforeTrip=money+savedMoneyAtThisPeriod;
 

@@ -1,17 +1,10 @@
 package lesson13.homework;
-
-import java.awt.List;
 import java.util.*;
 
 public class ClassCollectionUtils implements CollectionUtils {
-    //переделать класс по образцу, связанным с union с дубликатами
     @Override
     public Collection<Integer> union(Collection<Integer> a, Collection<Integer> b) throws NullPointerException {
-        //неверно записано
         ArrayList<Integer> newA=new ArrayList<>();
-//        a.addAll(b);
-//        newA.addAll(a);
-        //правильное решение см внизу
         newA.addAll(a);
         newA.addAll(b);
         return newA;
@@ -20,8 +13,8 @@ public class ClassCollectionUtils implements CollectionUtils {
     @Override
     public Collection<Integer> intersection(Collection<Integer> a, Collection<Integer> b) throws NullPointerException {
         LinkedList<Integer> newA=new LinkedList<>();
-        a.retainAll(b);
         newA.addAll(a);
+        newA.retainAll(b);
         return newA;
     }
 
@@ -29,8 +22,8 @@ public class ClassCollectionUtils implements CollectionUtils {
     public Set<Integer> unionWithoutDuplicate(Collection<Integer> a, Collection<Integer> b) throws NullPointerException {
         ArrayList<Integer> newA=new ArrayList<>();
         HashSet<Integer> noRepeats=new HashSet<>();
-        a.addAll(b);
         newA.addAll(a);
+        newA.addAll(b);
         noRepeats.addAll(newA);
         return noRepeats;
     }
@@ -39,8 +32,8 @@ public class ClassCollectionUtils implements CollectionUtils {
     public Set<Integer> intersectionWithoutDuplicate(Collection<Integer> a, Collection<Integer> b) throws NullPointerException {
         LinkedList<Integer> newA=new LinkedList<>();
         HashSet<Integer> noRepeats=new HashSet<>();
-        a.retainAll(b);
         newA.addAll(a);
+        newA.retainAll(b);
         noRepeats.addAll(newA);
         return noRepeats;
     }

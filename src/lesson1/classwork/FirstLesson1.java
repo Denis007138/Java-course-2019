@@ -13,12 +13,16 @@ public class FirstLesson1 {
         int aa = 12;
         long number = 12332223443l;
         boolean isFirstLesson = true;
-        int d=1300;
-        byte ab=(byte)d;
+        int d = 1300;
+        byte ab = (byte) d;
         System.out.println(ab);
-        int e=6;
-        int alph=4;
-        int ostatok=e%alph;
+        int e = 6;
+        int alph = 4;
+        int ostatok = e % alph;
+        System.out.println(ostatok);
+//        int ad=1000;
+//        int dc=ad%300;
+//        System.out.println(dc);
     }
 
 

@@ -1,6 +1,6 @@
 package lesson10;
 
-import java.util.Objects;
+import java.util.Arrays;
 
 public class Matrix implements IMatrix {
     private double[][] numbers;
@@ -30,30 +30,25 @@ public class Matrix implements IMatrix {
     @Override
     public double getValueAt(int rowIndex, int colIndex) throws IndexOutOfBoundsException {
         //необходимо сделать проверку больше ли индекс полученных чисел по отношению к заданным числам в классе main
-        return this.numbers[rowIndex][colIndex];
+        if(rowIndex>numbers.length || colIndex>numbers[0].length) {
+            return 0;
+        }
+        return numbers[rowIndex][colIndex];
     }
 
     @Override
     public void setValueAt(int rowIndex, int colIndex, double value) throws IndexOutOfBoundsException {
-//        for(int i=0;i<rowIndex;i++){
-//            for(int j=0;j<colIndex;j++){
-//                value=Math.random();
-//            }
-//        }
         this.numbers[rowIndex][colIndex]=value;
     }
 
     @Override
     public IMatrix add(IMatrix otherMatrix) throws IllegalArgumentException, NullPointerException {
-        if(this.getRows()!=otherMatrix.getRows()||this.getColumns()!=otherMatrix.getColumns())    {
-
-        }
         for(int i=0;i<this.numbers.length;i++){
                 for(int j=0;j<numbers[i].length;j++){
                     numbers[i][j]=numbers[i][j]+otherMatrix.getValueAt(i,j);
                 }
             }
-            return otherMatrix;
+            return this;
     }
 
     @Override
@@ -87,12 +82,13 @@ public class Matrix implements IMatrix {
 
     @Override
     public IMatrix transpose() {
-        double[][] transpose=new double[this.numbers[this.numbers.length-1].length][this.numbers.length];
-        for(int i=0;i<numbers.length;i++){
-            for(int j=0;j<numbers[i].length;j++){
+        double[][] transpose=new double[this.numbers.length][this.numbers[0].length];
+        Matrix matrix=new Matrix(transpose);
+        for(int i=0;i<this.numbers.length;i++){
+            for(int j=0;j<this.numbers.length;j++){
                 transpose[j][i]=numbers[i][j];
             }
-        }return this;
+        }return matrix;
     }
 
     @Override
@@ -106,60 +102,66 @@ public class Matrix implements IMatrix {
 
     @Override
     public double determinant() {
-        Matrix equal=new Matrix();
-        double determinant = 0;
-        if(equal.getRows()==equal.getColumns()){
-            for(int i=0;i<numbers.length;i++){
-                for(int j=0;j<numbers[i].length;j++){
-                    if(i==j){
-                        determinant*=numbers[i][j];
+        //разобрать структуру кода позже
+        if(!this.isSquareMatrix()){
+            return 0;
+        }else{
+            double[][] matrix=new double[this.numbers.length][this.numbers.length];
+            for(int i=0;i<this.numbers.length;i++){
+                for(int j=0;j<this.numbers.length;j++){
+                    matrix[i][j]=numbers[i][j];
+                }
+            }
+            double x;
+            for(int z=0;z<matrix.length;z++){
+                for(int i=1;i<matrix.length;i++){
+                    if(i-1>=z){
+                        x=matrix[i][z]/matrix[z][z];
+                        for(int j=0;j<matrix.length;j++){
+                            matrix[i][j]-=matrix[z][j]*x;
+                        }
                     }
                 }
             }
+            double det=1;
+            for (int i=0;i<matrix.length;i++){
+                det*=matrix[i][i];
+            }
+            return  det;
         }
-        return determinant;
     }
 
     @Override
     public boolean isNullMatrix() {
-        Matrix nullMatrix=new Matrix();
-        boolean a= nullMatrix.equals(numbers.length);
+        double[][] matrixIsNull=new double[numbers[0].length][numbers.length];
         for(int i=0;i<numbers.length;i++){
-            for(int j=0;j<numbers[i].length;j++){
-                 if(a){
-                     a=true;
-                 }else{
-                     a=false;
-                 }
+            for(int j=0;j<numbers.length;j++){
+                matrixIsNull[i][j]=0;
             }
         }
-        return a;
+        return Arrays.deepEquals(this.numbers, matrixIsNull);
     }
 
     @Override
     public boolean isIdentityMatrix() {
-        boolean proverka=true;
+        double[][] matrixIsIdentityMatrix=new double[numbers[0].length][numbers.length];
         for(int i=0;i<numbers.length;i++){
-            for(int j=0;j<numbers[i].length;j++){
-                if(i==j && this.numbers[i][j]==1){
-                    if(i!=j && this.numbers[i][j]==0){
-                        proverka=true;
-                    }
+            for(int j=0;j<numbers.length;j++){
+                if(i==j){
+                    matrixIsIdentityMatrix[i][j]=1;
                 }
             }
-        }return proverka;
+        }
+        return Arrays.deepEquals(this.numbers, matrixIsIdentityMatrix);
     }
 
     @Override
     public boolean isSquareMatrix() {
-        Matrix sverka=new Matrix();
-        boolean proverka;
-        if(sverka.getColumns()==sverka.getRows()){
-            proverka=false;
+        if(this.numbers.length==this.numbers[0].length){
+            return true;
         }else{
-            proverka=true;
+            return false;
         }
-        return proverka;
     }
 
     @Override

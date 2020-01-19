@@ -2,7 +2,7 @@ package lesson2.classwork;
 
 public class Main2 {
     public static void main(String[] args) {
-        int mark = 4;
+        int mark = 2;
         switch (mark) {
             case 5:
                 System.out.println("Отлично");

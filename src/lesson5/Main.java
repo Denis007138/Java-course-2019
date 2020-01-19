@@ -24,16 +24,16 @@ public class Main {
         System.out.println("Самый дорогой тур");
         ToursUtils.themostexpensivetour(tours);
         //дз задача 2
-        System.out.println("Введите количество звезд");
-        String stars=keyboard.nextLine();
-        ToursUtils.stars(tours,stars);
+//        System.out.println("Введите количество звезд");
+//        String stars=keyboard.nextLine();
+//        ToursUtils.stars(tours,stars);
         //дз задача 3
         System.out.println("Самый дешевый тур");
         ToursUtils.themostcheapest(tours);
         //дз задача 4
-        System.out.println("Введите страну для нахождения средней суммы туров этой страны");
-        String average=keyboard.nextLine();
-        ToursUtils.averagesumm(tours,average);
+//        System.out.println("Введите страну для нахождения средней суммы туров этой страны");
+//        String average=keyboard.nextLine();
+//        ToursUtils.averagesumm(tours,average);
         }
     }
 

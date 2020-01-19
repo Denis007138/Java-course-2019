@@ -87,9 +87,9 @@ public class Otziv {
         this.comment = comment;
     }
     public void printOtziv(){
-        System.out.printf("ID:%d LIKES:%d DISLIKES:%d RATING:%d DATEPUBLISH:%d",id,like,dislike,rating,datePublish);
+        System.out.printf("ID:%d LIKES:%d DISLIKES:%d RATING:%d DATEPUBLISH:%tc",id,like,dislike,rating,datePublish);
         System.out.println();
-        System.out.printf("ID:%d Имя:%s Фамилия:%s Дата регистрации:%d Ссылка на аватар:%s",user.getId(),user.getName(),user.getSername(),user.getDateRegister(),user.getPathToAvatar());
+        System.out.printf("ID:%d Имя:%s Фамилия:%s Дата регистрации:%tc Ссылка на аватар:%s",user.getId(),user.getName(),user.getSername(),user.getDateRegister(),user.getPathToAvatar());
         System.out.println();
         System.out.print("Достоинства:"+plusText);
         System.out.println();

@@ -2,23 +2,30 @@ package lesson10;
 
 public class Main {
     public static void main(String[] args) {
-        Matrix matrix=new Matrix(4,4);
-        matrix.setValueAt(0,0,2);
-        matrix.setValueAt(1,1,5);
-        matrix.setValueAt(1,2,6);
-        matrix.setValueAt(1,3,6);
-        Matrix matrix2=new Matrix(5,4);
-        matrix2.setValueAt(1,3,6);
-        //matrix2.setValueAt(0,0,6);
-        //matrix2.add(matrix);
-        //matrix.add(matrix);
-        //matrix.sub(matrix);
-        //matrix2.mul(matrix);
-        //matrix2.mul(7);
-        //matrix.transpose();
+        Matrix matrix=new Matrix(2,2);
+        Matrix matrix2=new Matrix(2,2);
+        matrix2.setValueAt(0,0,7);
+        matrix2.setValueAt(0,1,2);
+        matrix2.setValueAt(1,0,8);
+        matrix2.setValueAt(1,1,2);
+        matrix.fillMatrix(Math.random()*100);
+        matrix.printToConsole();
+        System.out.println("матрица до трансп");
         matrix2.printToConsole();
-        System.out.println(matrix2.isNullMatrix());
-
-
+        System.out.println("Матрица трнсп");
+        IMatrix a=matrix2.transpose();
+        a.printToConsole();
+        System.out.println("Проверка, квадратная ли матрица");
+        System.out.println(matrix.isSquareMatrix());
+        System.out.println(matrix.isIdentityMatrix());
+        System.out.println(matrix.isNullMatrix());
+        matrix2.mul(6);
+        matrix2.printToConsole();
+        matrix2.mul(matrix);
+        matrix2.printToConsole();
+        matrix.sub(matrix2);
+        matrix.printToConsole();
+        matrix.add(matrix2);
+        matrix.printToConsole();
     }
 }

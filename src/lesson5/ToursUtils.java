@@ -26,13 +26,22 @@ public class ToursUtils {
 
     //дз задача 1
     public static void themostexpensivetour(String[][] tours) {
-        int max = Integer.parseInt(tours[0][2]);
-        for (int i = 0; i < tours.length; i++) {
-            int price = Integer.parseInt(tours[i][2]);
-            if (max < price) {
+        int[] a=new int[tours.length];
+        for(int i=0;i<tours.length;i++){
+            int price=Integer.parseInt(tours[i][2]);
+            for(int e:a){
+                e=price;
+                a[i]=e;
+            }
+        }
+        Arrays.sort(a);
+        int max=a[a.length-1];
+        String b=String.valueOf(max);
+        for(int i=0;i<tours.length;i++){
+            boolean d=tours[i][2].equals(b);
+            if(d){
                 System.out.printf("Тур:%s-%s, цена-%s,%s", tours[i][0], tours[i][1], tours[i][2], tours[i][3]);
                 System.out.println();
-                return;
             }
         }
     }
@@ -48,16 +57,24 @@ public class ToursUtils {
 
     //дз задача 3
     public static void themostcheapest(String[][] tours) {
-        int min = Integer.parseInt(tours[0][2]);
-        for (int i = tours.length - 1; i >= 0; i--) {
-            int price = Integer.parseInt(tours[i][2]);
-            if (min > price) {
-                System.out.printf("%s, цена-%s", tours[i][1], tours[i][2]);
-                System.out.println();
-                return;
-
+            int[] a=new int[tours.length];
+            for(int i=0;i<tours.length;i++){
+                int price=Integer.parseInt(tours[i][2]);
+                for(int e:a){
+                    e=price;
+                    a[i]=e;
+                }
             }
-        }
+            Arrays.sort(a);
+            int min=a[0];
+            String b=String.valueOf(min);
+            for(int i=0;i<tours.length;i++){
+                boolean d=tours[i][2].equals(b);
+                if(d){
+                    System.out.printf("Тур:%s-%s, цена-%s,%s", tours[i][0], tours[i][1], tours[i][2], tours[i][3]);
+                    System.out.println();
+                }
+            }
     }
 
     //дз задача 4
